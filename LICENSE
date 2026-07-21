@@ -1,0 +1,31 @@
+Vardek — Proprietary Software License
+
+Copyright (c) 2026 Jorge Laurel. All rights reserved.
+
+This software and its source code, design, and associated materials
+(the "Software") are the confidential and proprietary property of
+Jorge Laurel. No license or right to use, copy, modify, distribute,
+sublicense, sell, publish, or create derivative works of the Software is
+granted except by a separate written agreement signed by the copyright
+holder.
+
+Distributed binary builds of Vardek are licensed, not sold, to end
+users under the End User License Agreement provided with the build. In the
+absence of a separate agreement, no rights are granted.
+
+"Vardek" and its logos are trademarks of Jorge Laurel. "Corsair" and
+"Xeneon" are trademarks of their respective owner and are referenced only
+to describe hardware compatibility; no affiliation or endorsement is
+implied.
+
+This Software bundles third-party components under their own permissive
+licenses; see THIRD-PARTY-NOTICES.md. Those notices apply only to the
+named components, not to Vardek as a whole.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
+OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

@@ -1,0 +1,78 @@
+diff --git a/Sources/MacXeneonEdgeTouchDriverCore/App/MacXeneonEdgeTouchDriverApplication.swift b/Sources/MacXeneonEdgeTouchDriverCore/App/MacXeneonEdgeTouchDriverApplication.swift
+index 7ead052..e12e630 100644
+--- a/Sources/MacXeneonEdgeTouchDriverCore/App/MacXeneonEdgeTouchDriverApplication.swift
++++ b/Sources/MacXeneonEdgeTouchDriverCore/App/MacXeneonEdgeTouchDriverApplication.swift
+@@ -40,6 +40,8 @@ public final class MacXeneonEdgeTouchDriverApplication {
+     )
+ 
+     private var stuckGestureTimer: DispatchSourceTimer?
++    private var displayRetryTimer: DispatchSourceTimer?
++    private var displayRetryAttemptsRemaining = 0
+     private var signalSources: [DispatchSourceSignal] = []
+     private var didRegisterDisplayCallback = false
+     private var isRunning = false
+@@ -116,6 +118,7 @@ public final class MacXeneonEdgeTouchDriverApplication {
+         hidMonitor.stop()
+         gestureQueue.sync {
+             cancelStuckGestureTimer()
++            cancelDisplayRetryTimer()
+             gestureController.forceCancel()
+         }
+         unregisterDisplayReconfigurationCallback()
+@@ -142,13 +145,56 @@ public final class MacXeneonEdgeTouchDriverApplication {
+                 category: .display,
+                 "Resolved Xeneon Edge display after \(reason): x=\(bounds.origin.x), y=\(bounds.origin.y), width=\(bounds.width), height=\(bounds.height)."
+             )
++            gestureQueue.async { [weak self] in
++                self?.cancelDisplayRetryTimer()
++            }
+         } else {
+             DriverLoggers.log(.error, category: .display, "Could not resolve Xeneon Edge display after \(reason). Touch events will be dropped.")
+             gestureQueue.async { [weak self] in
+                 self?.cancelStuckGestureTimer()
+                 self?.gestureController.forceCancel()
++                self?.scheduleDisplayRetryTimer()
++            }
++        }
++    }
++
++    /// On USB re-enumeration (wake/replug) the HID device can match before macOS
++    /// re-registers the display, leaving no mapper and dropping every touch. Retry
++    /// resolution every 2 s for up to 30 s so the driver heals without user input.
++    /// Must be called on gestureQueue.
++    private func scheduleDisplayRetryTimer() {
++        guard displayRetryTimer == nil else {
++            return
++        }
++
++        displayRetryAttemptsRemaining = 15
++        DriverLoggers.log(.notice, category: .display, "Scheduling display resolution retry every 2 s (up to 30 s).")
++
++        let timer = DispatchSource.makeTimerSource(queue: gestureQueue)
++        timer.schedule(deadline: .now() + .seconds(2), repeating: .seconds(2))
++        timer.setEventHandler { [weak self] in
++            guard let self else {
++                return
++            }
++
++            self.displayRetryAttemptsRemaining -= 1
++            if self.displayRetryAttemptsRemaining < 0 {
++                DriverLoggers.log(.error, category: .display, "Display resolution retries exhausted; will retry on the next display or HID event.")
++                self.cancelDisplayRetryTimer()
++                return
+             }
++
++            self.refreshDisplayMapping(reason: "display resolution retry")
+         }
++        timer.resume()
++        displayRetryTimer = timer
++    }
++
++    /// Must be called on gestureQueue.
++    private func cancelDisplayRetryTimer() {
++        displayRetryTimer?.setEventHandler {}
++        displayRetryTimer?.cancel()
++        displayRetryTimer = nil
+     }
+ 
+     func handleTouchEvent(_ event: TouchEvent) {
