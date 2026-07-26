@@ -46,6 +46,11 @@ Eight widgets ship bundled: Clock, Calendar, System Sensors, Sensor Gauge,
 Macro Pad, F1 Schedule, UniFi Network, and Weather. Drop your own into
 `~/Library/Application Support/Vardek/widgets/` and rescan.
 
+**Add-on widgets:** install more after the fact — no app update — from
+**[vardekapp/vardek-widgets](https://github.com/vardekapp/vardek-widgets)**.
+That repo is open source; grab a widget, drop it in the folder above, rescan.
+Authoring guide and PRs welcome there too.
+
 | | |
 |---|---|
 | ![Weather](assets/screenshots/weather.png) | ![Calendar](assets/screenshots/calendar.png) |
