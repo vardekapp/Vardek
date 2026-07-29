@@ -15,6 +15,19 @@ layer natively for the Mac: a full-screen, touch-driven grid of widgets that
 fills the strip and runs entirely on your machine — no cloud, no account, no
 telemetry.
 
+## Lightweight & local-first
+
+Vardek and its widgets are built to be **easy on your Mac** — small, native, and
+low-overhead, so the panel can stay up all day without weighing the system down.
+Widgets are simple self-contained web folders, not heavy apps.
+
+The design is **local-first**: whatever can run on your machine does. Clocks, the
+day/night terminator, life-progress bars, and more are pure local math with no
+network at all; others (like the ISS tracker) fetch only a tiny bit of data and
+compute the rest on-device. When a widget does need live data — weather, launches,
+earthquakes — it makes only the specific, minimal API calls it declares, and
+nothing else leaves your Mac.
+
 ## Requirements
 
 - macOS 13 (Ventura) or later
