@@ -58,6 +58,19 @@ Authoring guide and PRs welcome there too.
 | ![F1 Schedule](assets/screenshots/f1.png) | ![UniFi Network](assets/screenshots/unifi.png) |
 | **F1 Schedule** — next race, driver & constructor standings | **UniFi Network** — device and client status |
 
+## Admin
+
+Manage everything from a browser Admin page (`http://127.0.0.1:8137/admin`) — no config
+files to hand-edit. Live status, widget library and placement, per-widget settings,
+layout profiles, background, brightness, and sensor picks.
+
+| | |
+|---|---|
+| ![Admin — Status](assets/screenshots/admin-status.png) | ![Admin — Widgets](assets/screenshots/admin-widgets.png) |
+| **Status** — daemon, panel, and connection state at a glance | **Widgets** — the library, placement on the grid, and per-widget settings |
+| ![Admin — System](assets/screenshots/admin-system.png) | |
+| **System** — sensors, background, brightness, and profiles | |
+
 ## Privacy
 
 Local-only by design. All components run on your Mac over `127.0.0.1`; nothing
