@@ -73,9 +73,10 @@ Authoring guide and PRs welcome there too.
 
 ## Admin
 
-Manage everything from a browser Admin page (`http://127.0.0.1:8137/admin`) — no config
-files to hand-edit. Live status, widget library and placement, per-widget settings,
-layout profiles, background, brightness, and sensor picks.
+Manage everything from the Admin panel — open it as an app window (**Vardek menu →
+Open Admin**, ⌘A) or in any browser at `http://127.0.0.1:8137/admin`. Either way,
+no config files to hand-edit: live status, widget library and placement, per-widget
+settings, layout profiles, background, brightness, and sensor picks.
 
 | | |
 |---|---|
