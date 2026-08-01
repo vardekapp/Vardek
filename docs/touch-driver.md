@@ -46,3 +46,6 @@ Vardek's **Settings → System** shows whether the driver is detected and runnin
   Accessibility grant** — re-enable it in System Settings afterwards.
 - Touches off-target? The driver supports calibration; see its
   [README](https://github.com/ajvwhite/MacXeneonEdgeTouchDriver).
+- Since 1.0.3: swipe left/right anywhere to change carousel pages, drag
+  up/down to scroll a widget's content that overflows the panel (e.g. London
+  Tube arrivals).
