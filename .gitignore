@@ -1,2 +1,13 @@
 .DS_Store
 RELEASE-NOTES-*.md
+apps/
+dashboard/
+admin/
+widgets/
+config/
+scripts/
+Package.swift
+Package.resolved
+Makefile
+docs-public/
+docs-site/
