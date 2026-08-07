@@ -78,6 +78,12 @@ Open Admin**, ⌘A) or in any browser at `http://127.0.0.1:8137/admin`. Either w
 no config files to hand-edit: live status, widget library and placement, per-widget
 settings, layout profiles, background, brightness, and sensor picks.
 
+Arranging the panel is direct manipulation: **drag widgets onto a live page map**
+(or between pages, or onto a "New page" target), resize with per-widget size
+chips, and filter the library as you type. The whole editor also works from the
+keyboard, removals ask first and offer a 10-second **Undo**, and every change
+confirms with a "Saved ✓" pulse.
+
 | | |
 |---|---|
 | ![Admin — Status](assets/screenshots/admin-status.png) | ![Admin — Widgets](assets/screenshots/admin-widgets.png) |
