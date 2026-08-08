@@ -52,6 +52,7 @@ shasum -a 256 -c SHA256SUMS
 - [Setup](docs/setup.md) — install and first launch.
 - [Touch setup](docs/touch-driver.md) — enable the touchscreen (community driver).
 - [Troubleshooting](docs/troubleshooting.md) — common fixes.
+- **In-app Help** (Vardek menu → Help, or ⌘?) — per-widget help pages, kept in sync with each widget's current behavior.
 
 ## Widgets
 
