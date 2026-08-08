@@ -67,9 +67,11 @@ Authoring guide and PRs welcome there too.
 | | |
 |---|---|
 | ![Weather](assets/screenshots/weather.png) | ![Calendar](assets/screenshots/calendar.png) |
-| **Weather** — current conditions, hourly, 5-day | **Calendar** — three-month grid |
+| **Weather** — current conditions, hourly, 5-day | **Calendar** — hero date + three-month grid, instant first paint |
 | ![F1 Schedule](assets/screenshots/f1.png) | ![UniFi Network](assets/screenshots/unifi.png) |
-| **F1 Schedule** — next race, driver & constructor standings | **UniFi Network** — device and client status |
+| **F1 Schedule** — next race, full weekend session timeline, season calendar, and both championships on one surface | **UniFi Network** — glance summary plus per-device detail: name, model, IP, status, firmware |
+| ![System Sensors](assets/screenshots/system-sensors.png) | |
+| **System Sensors** — CPU, memory, and network instruments that go amber/red past real thresholds and dim when data stops | |
 
 ## Admin
 
