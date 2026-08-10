@@ -15,18 +15,15 @@ layer natively for the Mac: a full-screen, touch-driven grid of widgets that
 fills the strip and runs entirely on your machine — no cloud, no account, no
 telemetry.
 
-## Lightweight & local-first
+## Local-first
 
-Vardek and its widgets are built to be **easy on your Mac** — small, native, and
-low-overhead, so the panel can stay up all day without weighing the system down.
-Widgets are simple self-contained web folders, not heavy apps.
-
-The design is **local-first**: whatever can run on your machine does. Clocks, the
-day/night terminator, life-progress bars, and more are pure local math with no
-network at all; others (like the ISS tracker) fetch only a tiny bit of data and
-compute the rest on-device. When a widget does need live data — weather, launches,
-earthquakes — it makes only the specific, minimal API calls it declares, and
-nothing else leaves your Mac.
+Whatever can run on your machine does. Clocks, the day/night terminator,
+life-progress bars, and more are pure local math with no network at all; others
+(like the ISS tracker) fetch only a tiny bit of data and compute the rest
+on-device. When a widget does need live data — weather, launches, earthquakes —
+it makes only the exact API calls its manifest lists, and nothing else leaves
+your Mac. Some widgets store their API keys in the macOS Keychain, never in a
+plaintext config file.
 
 ## Requirements
 
@@ -56,14 +53,15 @@ shasum -a 256 -c SHA256SUMS
 
 ## Widgets
 
-Eight widgets ship bundled: Clock, Calendar, System Sensors, Sensor Gauge,
-Macro Pad, F1 Schedule, UniFi Network, and Weather. Drop your own into
+Eight widgets ship bundled. Drop your own into
 `~/Library/Application Support/Vardek/widgets/` and rescan.
 
 **Add-on widgets:** install more after the fact — no app update — from
 **[vardekapp/vardek-widgets](https://github.com/vardekapp/vardek-widgets)**.
 That repo is open source; grab a widget, drop it in the folder above, rescan.
 Authoring guide and PRs welcome there too.
+
+### Featured
 
 | | |
 |---|---|
@@ -73,6 +71,11 @@ Authoring guide and PRs welcome there too.
 | **F1 Schedule** — next race, full weekend session timeline, season calendar, and both championships on one surface | **UniFi Network** — glance summary plus per-device detail: name, model, IP, status, firmware |
 | ![System Sensors](assets/screenshots/system-sensors.png) | |
 | **System Sensors** — CPU, memory, and network instruments that go amber/red past real thresholds and dim when data stops | |
+
+### Also bundled
+
+**Clock**, **Sensor Gauge**, and **Macro Pad** — see them live in-app (⌘? →
+per-widget Help) or via the ⌘A Admin panel.
 
 ## Admin
 
@@ -104,9 +107,11 @@ to the exact hosts that widget declares. Full details at
 
 ## License
 
-Vardek is proprietary and **not open source**. Binary builds are free to use
-under the End User License Agreement bundled with the app. See [`LICENSE`](LICENSE)
-and [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md).
+Vardek is proprietary and **not open source** — the source that builds these
+releases isn't published. What that license *doesn't* do: no telemetry, no
+account, no DRM or anti-tamper clause, free forever. Binary builds are free to
+use under the End User License Agreement bundled with the app. See
+[`LICENSE`](LICENSE) and [`THIRD-PARTY-NOTICES.md`](THIRD-PARTY-NOTICES.md).
 
 "Corsair" and "Xeneon" are trademarks of their respective owner; Vardek
 references them only for hardware compatibility and is not affiliated with or
