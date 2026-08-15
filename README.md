@@ -3,17 +3,17 @@
 A local, Mac-native widget dashboard for the **Corsair Xeneon Edge™** touchscreen
 (the 2560×720 USB-C secondary panel).
 
-**Website:** [vardek.app](https://vardek.app) · **Download:** [latest release](https://github.com/vardekapp/Vardek/releases/latest)
+**Website:** [vardek.app](https://vardek.app) · **Download:** [latest release](https://github.com/vardekapp/Vardek/releases/latest) · **vs iCUE:** [comparison](https://vardek.app/vs-icue/)
 
 ![Vardek dashboard — macro buttons, system sensors, and clock on the Xeneon Edge](assets/screenshots/dashboard.png)
 
 ## What it is
 
-The Xeneon Edge™ ships with a widget dashboard that only runs inside Corsair iCUE
-on Windows. On macOS the panel is just a second display. Vardek rebuilds that
-layer natively for the Mac: a full-screen, touch-driven grid of widgets that
-fills the strip and runs entirely on your machine — no cloud, no account, no
-telemetry.
+Corsair ships the Xeneon Edge™ widget layer only for Windows, through iCUE. On
+macOS the 2560×720 panel arrives as a blank second display. Vardek rebuilds
+that widget layer natively for the Mac: a full-screen, touch-driven grid of
+eight bundled widgets plus any iCUE-format add-on you drop in, running
+entirely on your machine. Free, macOS 13+, signed and notarized by Apple.
 
 ## Local-first
 
@@ -22,8 +22,7 @@ life-progress bars, and more are pure local math with no network at all; others
 (like the ISS tracker) fetch only a tiny bit of data and compute the rest
 on-device. When a widget does need live data — weather, launches, earthquakes —
 it makes only the exact API calls its manifest lists, and nothing else leaves
-your Mac. Some widgets store their API keys in the macOS Keychain, never in a
-plaintext config file.
+your Mac. API keys live in the macOS Keychain, never in a plaintext config file.
 
 ## Requirements
 
@@ -49,40 +48,38 @@ shasum -a 256 -c SHA256SUMS
 - [Setup](docs/setup.md) — install and first launch.
 - [Touch setup](docs/touch-driver.md) — enable the touchscreen (community driver).
 - [Troubleshooting](docs/troubleshooting.md) — common fixes.
+- [Widget authoring guide](https://vardek.app/widgets/authoring/) — build your own widget.
 - **In-app Help** (Vardek menu → Help, or ⌘?) — per-widget help pages, kept in sync with each widget's current behavior.
 
 ## Widgets
 
-Eight widgets ship bundled. Drop your own into
-`~/Library/Application Support/Vardek/widgets/` and rescan.
+Eight widgets ship bundled, curated and fixed at install. Drop your own into
+`~/Library/Application Support/Vardek/widgets/` and rescan — no app update needed.
 
 **Add-on widgets:** install more after the fact — no app update — from
 **[vardekapp/vardek-widgets](https://github.com/vardekapp/vardek-widgets)**.
 That repo is open source; grab a widget, drop it in the folder above, rescan.
-Authoring guide and PRs welcome there too.
-
-### Featured
+[Authoring guide](https://vardek.app/widgets/authoring/) and PRs welcome there too.
 
 | | |
 |---|---|
 | ![Weather](assets/screenshots/weather.png) | ![Calendar](assets/screenshots/calendar.png) |
-| **Weather** — current conditions, hourly, 5-day | **Calendar** — hero date + three-month grid, instant first paint |
+| **Weather** — current conditions, hourly, and a five-day outlook | **Calendar** — hero date with a three-month grid, instant first paint |
 | ![F1 Schedule](assets/screenshots/f1.png) | ![UniFi Network](assets/screenshots/unifi.png) |
-| **F1 Schedule** — next race, full weekend session timeline, season calendar, and both championships on one surface | **UniFi Network** — glance summary plus per-device detail: name, model, IP, status, firmware |
+| **F1 Schedule** — next race, full weekend session timeline, season calendar, both championships on one surface | **UniFi Network** — glance summary plus per-device detail: name, model, IP, status, firmware |
 | ![System Sensors](assets/screenshots/system-sensors.png) | |
-| **System Sensors** — CPU, memory, and network instruments that go amber/red past real thresholds and dim when data stops | |
+| **System Sensors** — CPU, memory, and network instruments that go amber past real thresholds and dim when data stops | |
 
-### Also bundled
-
-**Clock**, **Sensor Gauge**, and **Macro Pad** — see them live in-app (⌘? →
-per-widget Help) or via the ⌘A Admin panel.
+**Also bundled:** **Clock** (time, kept honest by local math with no network at
+all), **Sensor Gauge** (one sensor, one dial — pick the reading that matters),
+and **Macro Pad** (touch buttons on the panel, wired to what you run most) —
+see them live in-app (⌘? → per-widget Help) or via the ⌘A Admin panel.
 
 ## Admin
 
 Manage everything from the Admin panel — open it as an app window (**Vardek menu →
-Open Admin**, ⌘A) or in any browser at `http://127.0.0.1:8137/admin`. Either way,
-no config files to hand-edit: live status, widget library and placement, per-widget
-settings, layout profiles, background, brightness, and sensor picks.
+Open Admin**, ⌘A) or in any browser at `http://127.0.0.1:8137/admin`. Placement,
+settings, sensors, brightness, profiles — no config files to hand-edit.
 
 Arranging the panel is direct manipulation: **drag widgets onto a live page map**
 (or between pages, or onto a "New page" target), resize with per-widget size
@@ -93,9 +90,61 @@ confirms with a "Saved ✓" pulse.
 | | |
 |---|---|
 | ![Admin — Status](assets/screenshots/admin-status.png) | ![Admin — Widgets](assets/screenshots/admin-widgets.png) |
-| **Status** — daemon, panel, and connection state at a glance | **Widgets** — the library, placement on the grid, and per-widget settings |
+| **Status** — daemon, panel, and live sensors at a glance | **Widgets** — arrange pages, browse the library, set options |
 | ![Admin — System](assets/screenshots/admin-system.png) | |
-| **System** — sensors, background, brightness, and profiles | |
+| **System** — display, day/night brightness, touch-driver status | |
+
+## Questions
+
+<details>
+<summary><strong>Does the Corsair Xeneon Edge work on a Mac?</strong></summary>
+<br>
+
+The panel does. Over USB-C or HDMI, macOS sees the Xeneon Edge™ as an ordinary
+2560×720 second display. The widget layer does not: Corsair delivers that
+through iCUE on Windows. On macOS the panel is a blank strip of desktop until
+you run something on it. Vardek is what runs on it — see the
+[full iCUE vs Vardek comparison](https://vardek.app/vs-icue/).
+</details>
+
+<details>
+<summary><strong>Does Vardek send my data anywhere?</strong></summary>
+<br>
+
+No. The daemon binds to 127.0.0.1 and is not reachable off the machine. No
+cloud, no account, no telemetry. The only network traffic is the API calls a
+data widget explicitly makes, and those go through an audited proxy limited to
+hosts the widget declares in its manifest. Full detail on the
+[privacy page](https://vardek.app/privacy/).
+</details>
+
+<details>
+<summary><strong>Can Vardek use iCUE widgets?</strong></summary>
+<br>
+
+Yes. Vardek reads the same `manifest.json` plus `index.html` format iCUE
+widgets use, so community and Corsair marketplace widgets import directly.
+Drop an add-on into the widgets folder, rescan, done. No app update needed —
+see the [widget authoring guide](https://vardek.app/widgets/authoring/).
+</details>
+
+<details>
+<summary><strong>How much does Vardek cost?</strong></summary>
+<br>
+
+Nothing. Vardek is free, closed source, and distributed as a signed and
+notarized DMG through GitHub Releases. No paid tier, no subscription, no
+account.
+</details>
+
+<details>
+<summary><strong>Do I need a Xeneon Edge to run Vardek?</strong></summary>
+<br>
+
+No. Vardek runs full-screen on any macOS display, so you can try it before the
+Edge™ arrives. The layout is built for the panel's 2560×720 shape and reads
+best there, but nothing requires that hardware.
+</details>
 
 ## Privacy
 
@@ -103,7 +152,7 @@ Local-only by design. All components run on your Mac over `127.0.0.1`; nothing
 listens on your network. The only traffic that leaves your Mac is the specific
 API call a widget you enable makes (e.g. Weather fetching a forecast), limited
 to the exact hosts that widget declares. Full details at
-[vardek.app](https://vardek.app).
+[vardek.app/privacy](https://vardek.app/privacy/).
 
 ## License
 
