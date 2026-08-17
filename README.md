@@ -46,6 +46,7 @@ shasum -a 256 -c SHA256SUMS
 ## Documentation
 
 - [Setup](docs/setup.md) — install and first launch.
+- [Mac display setup](https://vardek.app/mac-setup/) — recommended window sizes if you don't have a Xeneon Edge.
 - [Touch setup](docs/touch-driver.md) — enable the touchscreen (community driver).
 - [Troubleshooting](docs/troubleshooting.md) — common fixes.
 - [Widget authoring guide](https://vardek.app/widgets/authoring/) — build your own widget.

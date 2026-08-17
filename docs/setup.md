@@ -22,6 +22,14 @@
 - A fresh install starts with the System Sensors widget. Open **Settings**
   (Vardek menu → Settings…, or ⌘,) to add and arrange more widgets.
 
+**No Xeneon Edge?** The widget grid is tuned for the Edge's 2560×720 shape, so
+running fullscreen on a normal 16:9/16:10 Mac display stretches it. Exit
+fullscreen (green traffic-light button, see below) and resize the window to
+something close to that aspect ratio instead — see
+[vardek.app/mac-setup](https://vardek.app/mac-setup/) for recommended sizes per
+display (e.g. ~1600×450 on a 1080p/1440p external monitor, ~1280×360 on a
+13"–14" MacBook).
+
 ## The window
 
 The dashboard is a normal Mac window in native fullscreen:
