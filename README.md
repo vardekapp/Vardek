@@ -54,7 +54,7 @@ shasum -a 256 -c SHA256SUMS
 
 ## Widgets
 
-Eight widgets ship bundled, curated and fixed at install. Drop your own into
+Six widgets ship bundled, curated and fixed at install. Drop your own into
 `~/Library/Application Support/Vardek/widgets/` and rescan — no app update needed.
 
 **Add-on widgets:** install more after the fact — no app update — from
@@ -66,8 +66,6 @@ That repo is open source; grab a widget, drop it in the folder above, rescan.
 |---|---|
 | ![Weather](assets/screenshots/weather.png) | ![Calendar](assets/screenshots/calendar.png) |
 | **Weather** — current conditions, hourly, and a five-day outlook | **Calendar** — hero date with a three-month grid, instant first paint |
-| ![F1 Schedule](assets/screenshots/f1.png) | ![UniFi Network](assets/screenshots/unifi.png) |
-| **F1 Schedule** — next race, full weekend session timeline, season calendar, both championships on one surface | **UniFi Network** — glance summary plus per-device detail: name, model, IP, status, firmware |
 | ![System Sensors](assets/screenshots/system-sensors.png) | |
 | **System Sensors** — CPU, memory, and network instruments that go amber past real thresholds and dim when data stops | |
 
