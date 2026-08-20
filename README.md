@@ -12,7 +12,7 @@ A local, Mac-native widget dashboard for the **Corsair Xeneon Edge™** touchscr
 Corsair ships the Xeneon Edge™ widget layer only for Windows, through iCUE. On
 macOS the 2560×720 panel arrives as a blank second display. Vardek rebuilds
 that widget layer natively for the Mac: a full-screen, touch-driven grid of
-eight bundled widgets plus any iCUE-format add-on you drop in, running
+six bundled widgets plus any Vardek-format add-on you drop in, running
 entirely on your machine. Free, macOS 13+, signed and notarized by Apple.
 
 ## Local-first
@@ -121,10 +121,16 @@ hosts the widget declares in its manifest. Full detail on the
 <summary><strong>Can Vardek use iCUE widgets?</strong></summary>
 <br>
 
-Yes. Vardek reads the same `manifest.json` plus `index.html` format iCUE
-widgets use, so community and Corsair marketplace widgets import directly.
-Drop an add-on into the widgets folder, rescan, done. No app update needed —
-see the [widget authoring guide](https://vardek.app/widgets/authoring/).
+Not directly. Building an iCUE widget today means installing Corsair's
+WidgetBuilder CLI, scaffolding and validating the widget with it, then
+packaging it into a `.icuewidget` file that gets imported through iCUE's own
+**+** button — a manifest schema (`author`, `preview_icon`,
+`supported_devices`, …) and config model (`<meta name="x-icue-property">`
+tags, `onICUEInitialized`) built for iCUE only. Vardek widgets are a plain
+folder — `manifest.json` plus `index.html`, no CLI, no packaging step, no
+iCUE install required. Community add-ons built for Vardek install by dropping
+the folder into the widgets folder, rescan, done — see the
+[widget authoring guide](https://vardek.app/widgets/authoring/).
 </details>
 
 <details>
