@@ -62,6 +62,12 @@ Six widgets ship bundled, curated and fixed at install. Drop your own into
 That repo is open source; grab a widget, drop it in the folder above, rescan.
 [Authoring guide](https://vardek.app/widgets/authoring/) and PRs welcome there too.
 
+**Community add-ons:** [kevinelliott/vardek-widgets](https://github.com/kevinelliott/vardek-widgets)
+by Kevin Elliott — a separate, community-maintained collection of 100+
+add-on widgets (clocks, weather, space, finance, aviation, generative art).
+Not affiliated with or reviewed by the Vardek team; install same as any
+add-on widget above.
+
 | | |
 |---|---|
 | ![Weather](assets/screenshots/weather.png) | ![Calendar](assets/screenshots/calendar.png) |
