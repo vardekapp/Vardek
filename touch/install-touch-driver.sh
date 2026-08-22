@@ -17,7 +17,9 @@ fi
 
 (
   cd "$DRIVER_ROOT"
-  git fetch origin
+  # Only hit the network if the pinned commit isn't already local (re-runs at the
+  # same pin skip the fetch entirely).
+  git cat-file -e "$DRIVER_COMMIT^{commit}" 2>/dev/null || git fetch origin
   git checkout "$DRIVER_COMMIT"
   # Reset any previously applied patches, then re-apply Vardek patches on the
   # pinned commit — idempotent across re-runs. Patches live in the Vardek repo

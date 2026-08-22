@@ -43,5 +43,3 @@ SOFTWARE.
 - **MacXeneonEdgeTouchDriver** (MIT, © ajvwhite) — cloned client-side at install
   time by `make install-touch`; never part of the Vardek app bundle. Upstream
   attribution is preserved in the installer.
-- **Google Fonts** (JetBrains Mono, Titillium Web — SIL OFL 1.1) — loaded from
-  Google's CDN at runtime; not redistributed in the bundle.
