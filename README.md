@@ -65,7 +65,7 @@ That repo is open source; grab a widget, drop it in the folder above, rescan.
 **Community add-ons:** [kevinelliott/vardek-widgets](https://github.com/kevinelliott/vardek-widgets)
 by Kevin Elliott — a separate, community-maintained collection of 100+
 add-on widgets (clocks, weather, space, finance, aviation, generative art).
-Not affiliated with or reviewed by the Vardek team; install same as any
+Always review any public widget before installing; install same as any
 add-on widget above.
 
 | | |
