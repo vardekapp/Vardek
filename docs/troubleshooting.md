@@ -6,8 +6,9 @@ The background service didn't start or is still starting. It usually resolves in
 a couple of seconds. If it persists:
 
 - Check the log: `~/Library/Logs/Vardek/daemon.log`.
-- Another process may hold port **8137**. Quit Vardek, check with
-  `lsof -i :8137`, then relaunch.
+- Since 1.0.18 the service runs as a private child of the app and no longer uses
+  a network port. If the app was modified or is not the signed release, the
+  service refuses to start. Reinstall from the official DMG.
 
 ## Panel opens on the wrong display
 

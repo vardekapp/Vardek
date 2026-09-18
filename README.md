@@ -83,7 +83,7 @@ see them live in-app (⌘? → per-widget Help) or via the ⌘A Admin panel.
 ## Admin
 
 Manage everything from the Admin panel — open it as an app window (**Vardek menu →
-Open Admin**, ⌘A) or in any browser at `http://127.0.0.1:8137/admin`. Placement,
+Open Admin**, ⌘A). Placement,
 settings, sensors, brightness, profiles — no config files to hand-edit.
 
 Arranging the panel is direct manipulation: **drag widgets onto a live page map**
