@@ -55,11 +55,13 @@ shasum -a 256 -c SHA256SUMS
 ## Widgets
 
 Six widgets ship bundled, curated and fixed at install. Drop your own into
-`~/Library/Application Support/Vardek/widgets/` and rescan — no app update needed.
+`~/Library/Application Support/Vardek/widgets/`, rescan, and approve it once in
+Admin — no app update needed.
 
 **Add-on widgets:** install more after the fact — no app update — from
 **[vardekapp/vardek-widgets](https://github.com/vardekapp/vardek-widgets)**.
-That repo is open source; grab a widget, drop it in the folder above, rescan.
+That repo is open source; grab a widget, drop it in the folder above, rescan,
+approve it in Admin.
 [Authoring guide](https://vardek.app/widgets/authoring/) and PRs welcome there too.
 
 **Community add-ons:** [kevinelliott/vardek-widgets](https://github.com/kevinelliott/vardek-widgets)
@@ -116,7 +118,8 @@ you run something on it. Vardek is what runs on it — see the
 <summary><strong>Does Vardek send my data anywhere?</strong></summary>
 <br>
 
-No. The daemon binds to 127.0.0.1 and is not reachable off the machine. No
+No. The daemon opens no network port at all; it runs as a signature-verified
+child process of the app and talks to it over private pipes. No
 cloud, no account, no telemetry. The only network traffic is the API calls a
 data widget explicitly makes, and those go through an audited proxy limited to
 hosts the widget declares in its manifest. Full detail on the
@@ -135,7 +138,7 @@ packaging it into a `.icuewidget` file that gets imported through iCUE's own
 tags, `onICUEInitialized`) built for iCUE only. Vardek widgets are a plain
 folder — `manifest.json` plus `index.html`, no CLI, no packaging step, no
 iCUE install required. Community add-ons built for Vardek install by dropping
-the folder into the widgets folder, rescan, done — see the
+the folder into the widgets folder, rescan, approve once in Admin — see the
 [widget authoring guide](https://vardek.app/widgets/authoring/).
 </details>
 
@@ -157,10 +160,30 @@ Edge™ arrives. The layout is built for the panel's 2560×720 shape and reads
 best there, but nothing requires that hardware.
 </details>
 
+## What changed in 1.0.18
+
+Security release; every user should update. Full notes on the
+[release page](https://github.com/vardekapp/Vardek/releases/tag/v1.0.18).
+
+- **No network port.** The daemon no longer listens on `127.0.0.1:8137`. The app
+  launches it over private pipes and both sides verify the other's Developer ID
+  signature before any settings or Keychain data are opened.
+- **Admin is in-app only.** ⌘A or Vardek menu → Open Admin. Browser Admin is gone.
+- **Widget approval.** User-installed widgets must be approved once in Admin
+  before they can use the network proxy or a stored key. Changed files or
+  permissions ask again. Keys are scoped to the approved widget; on upgrade,
+  Vardek offers to migrate existing keys and leaves them untouched if you decline.
+- **Hardened widget runtime.** Response-level sandbox/CSP on every widget
+  document, hash-pinned scripts (no inline `onclick`/`onerror`), no navigation
+  inside widget documents, external links need a native confirmation.
+- **Bounded work.** Proxy requests and Macro Pad actions are rate-limited per
+  widget and globally; a failed update check now says so instead of "up to date".
+
 ## Privacy
 
-Local-only by design. All components run on your Mac over `127.0.0.1`; nothing
-listens on your network. The only traffic that leaves your Mac is the specific
+Local-only by design. Since 1.0.18 nothing listens on any port, not even
+loopback: the app launches its daemon as a child process and the two talk over
+private pipes after verifying each other's code signature. The only traffic that leaves your Mac is the specific
 API call a widget you enable makes (e.g. Weather fetching a forecast), limited
 to the exact hosts that widget declares. Full details at
 [vardek.app/privacy](https://vardek.app/privacy/).
