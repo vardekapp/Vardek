@@ -6,9 +6,10 @@ A local, Mac-native widget dashboard for the **Corsair Xeneon Edge™** touchscr
 **Website:** [vardek.app](https://vardek.app) · **Download:** [latest release](https://github.com/vardekapp/Vardek/releases/latest) · **vs iCUE:** [comparison](https://vardek.app/vs-icue/)
 
 > [!IMPORTANT]
-> **Upgrading to 1.0.22?** From 1.0.19 through 1.0.21, just install the new app. Upgrading from
-> 1.0.18 or earlier, the add-on widgets were renamed and must be reinstalled —
-> follow the [upgrade steps](#upgrading-to-1022) below.
+> **Upgrading to 1.0.23?** From 1.0.19 or later, install the new app and check
+> [three small changes](#upgrading-to-1023). Upgrading from 1.0.18 or earlier, the
+> add-on widgets were renamed and must be reinstalled — follow the
+> [upgrade steps](#upgrading-to-1023) below.
 
 ![Vardek dashboard — macro buttons, system sensors, and clock on the Xeneon Edge](assets/screenshots/dashboard.png)
 
@@ -48,16 +49,28 @@ Verify the download against `SHA256SUMS.txt` (attached to each release) if you l
 shasum -a 256 -c SHA256SUMS.txt
 ```
 
-## Upgrading to 1.0.22
+## Upgrading to 1.0.23
 
+<a name="upgrading-to-1022"></a>
 <a name="upgrading-to-1021"></a>
 <a name="upgrading-to-1020"></a>
-**Install the app.** Quit Vardek, open `Vardek-1.0.22.dmg`, and drag **Vardek**
+**Install the app.** Quit Vardek, open `Vardek-1.0.23.dmg`, and drag **Vardek**
 into **Applications**, replacing the old copy. Open Vardek.
 
-**Coming from 1.0.19, 1.0.20 or 1.0.21?** That's all — nothing else to do.
-Auto-brightness is now built in; if you installed `m1ddc` only for Vardek you
-can remove it (`brew uninstall m1ddc`).
+**Coming from 1.0.19, 1.0.20, 1.0.21 or 1.0.22?** Installing is all you need; your
+pages, settings and approvals carry over. Three things behave differently:
+
+- **Revoking an add-on deletes the keys saved for it** (Admin says so first).
+  If you approve it again later, enter its keys again.
+- **Your own widgets:** an ID may use only letters, digits, `_`, `.` and `-`,
+  must not start with `.`, and is at most 128 characters; secret key names may
+  use only letters, digits and `_`. A widget that doesn't qualify is listed with
+  the reason in **Admin → Widgets**.
+- **Profile names** can no longer contain `/` or `\`; existing ones that do are
+  renamed automatically.
+
+From 1.0.21 or earlier, auto-brightness is built in: if you installed `m1ddc`
+only for Vardek you can remove it (`brew uninstall m1ddc`).
 
 <a name="upgrading-to-1019"></a>
 **Coming from 1.0.18 or earlier?** Do these steps too:
@@ -213,6 +226,32 @@ Edge™ arrives. The layout is built for the panel's 2560×720 shape and reads
 best there, but nothing requires that hardware.
 </details>
 
+## What changed in 1.0.23
+
+Security hardening release. Full notes on the
+[release page](https://github.com/vardekapp/Vardek/releases/tag/v1.0.23).
+
+- **Macro Pad actions are bound to their pad:** a Macro Pad can show and run
+  only the actions listed for it. The separate, unused route that ran actions
+  was removed.
+- **One Admin check:** every request only Settings makes (brightness, power,
+  update check, sensors, system info, rescan, profiles, background) must carry
+  the Admin marker, through a single gate that a test enforces for new routes.
+- **Paths are decoded exactly once**, so a crafted name like `a%2541` can't
+  select a different image, profile or action than the one requested.
+- **One rule for widget IDs and key names**, shared by the app and its helper,
+  including case-insensitive protection of the reserved `com.vardek.` prefix.
+- **Approvals and keys are decided in one place:** approving an add-on can no
+  longer delete the keys of a newer version that appeared at the same moment.
+- **Keys don't outlive their widget:** Revoke deletes an installation's keys,
+  and keys of a widget folder gone for 7 days are removed.
+- **No blank credentials:** a widget whose API key you haven't entered gets an
+  error instead of sending an empty key to the provider.
+- **Background images** are read through a single no-follow file handle; links,
+  hard links, pipes and files over 50 MB are refused.
+
+See [Upgrading to 1.0.23](#upgrading-to-1023) for what to check after installing.
+
 ## What changed in 1.0.22
 
 Security hardening release. Full notes on the
@@ -230,7 +269,7 @@ Security hardening release. Full notes on the
 - Leftover pre-1.0.18 loopback code removed; release builds are checked against
   the exact signing identity and permissions before notarization.
 
-See [Upgrading to 1.0.22](#upgrading-to-1022) — nothing to do if you're on 1.0.19 or later.
+See [Upgrading to 1.0.23](#upgrading-to-1023) for what to check after installing.
 
 ## What changed in 1.0.21
 
@@ -243,7 +282,7 @@ Fix release. Full notes on the
 - **Stricter file paths** on the app's private connection to its background
   helper: `.` and `..` segments, plain or encoded, are refused.
 
-See [Upgrading to 1.0.22](#upgrading-to-1022) — nothing to do if you're on 1.0.19 or later.
+See [Upgrading to 1.0.23](#upgrading-to-1023) for what to check after installing.
 
 ## What changed in 1.0.20
 
@@ -264,7 +303,7 @@ Reliability release; no security boundary changed. Full notes on the
 - **Finder's `.DS_Store` files are ignored** in the widgets folder instead of
   causing a scan error or cancelling a widget's approval.
 
-See [Upgrading to 1.0.22](#upgrading-to-1022) — nothing to do if you're on 1.0.19 or later.
+See [Upgrading to 1.0.23](#upgrading-to-1023) for what to check after installing.
 
 ## What changed in 1.0.19
 
@@ -283,7 +322,7 @@ Security release; every user should update. Full notes on the
 - **Official add-ons renamed to `app.vardek.*`** so they load again (1.0.18
   reserved the old `com.vardek.*` names for built-in widgets).
 
-See [Upgrading to 1.0.22](#upgrading-to-1022) for what to do after installing.
+See [Upgrading to 1.0.23](#upgrading-to-1023) for what to do after installing.
 
 ## What changed in 1.0.18
 
