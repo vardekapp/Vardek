@@ -26,8 +26,9 @@ a display in Settings → System.
 
 ## Touch stopped working
 
-Usually the Accessibility grant was lost (driver update) or the sleep/wake race
-— see [Touch setup](touch-driver.md). Unplugging and replugging the panel's
+Usually the Accessibility or Input Monitoring grant was lost (a driver
+re-install rebuilds it) — see [Touch setup](touch-driver.md), which also shows
+how to check both grants. Unplugging and replugging the panel's
 USB-C also helps.
 
 ## No CPU/GPU temperatures
