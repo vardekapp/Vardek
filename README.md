@@ -145,7 +145,8 @@ add-on widget above.
 
 **Also bundled:** **Clock** (time, kept honest by local math with no network at
 all), **Sensor Gauge** (one sensor, one dial — pick the reading that matters),
-and **Macro Pad** (touch buttons on the panel, wired to what you run most) —
+and **Macro Pad** (touch buttons that open an app or website, run a command or
+AppleScript, or switch your saved layout) —
 see them live in-app (⌘? → per-widget Help) or via the ⌘A Admin panel.
 
 ## Admin
