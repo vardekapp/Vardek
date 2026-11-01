@@ -6,10 +6,10 @@ A local, Mac-native widget dashboard for the **Corsair Xeneon Edge™** touchscr
 **Website:** [vardek.app](https://vardek.app) · **Download:** [latest release](https://github.com/vardekapp/Vardek/releases/latest) · **vs iCUE:** [comparison](https://vardek.app/vs-icue/)
 
 > [!IMPORTANT]
-> **Upgrading to 1.0.24?** From 1.0.19 or later, install the new app and check
-> [one small change](#upgrading-to-1024). Upgrading from 1.0.18 or earlier, the
-> add-on widgets were renamed and must be reinstalled — follow the
-> [upgrade steps](#upgrading-to-1024) below.
+> **Upgrading to 1.0.25?** From 1.0.19 or later, install the new app; nothing else
+> to do from 1.0.24, and [one small change](#upgrading-to-1025) from 1.0.23 or
+> earlier. Upgrading from 1.0.18 or earlier, the add-on widgets were renamed and
+> must be reinstalled — follow the [upgrade steps](#upgrading-to-1025) below.
 
 ![Vardek dashboard — macro buttons, system sensors, and clock on the Xeneon Edge](assets/screenshots/dashboard.png)
 
@@ -49,17 +49,20 @@ Verify the download against `SHA256SUMS.txt` (attached to each release) if you l
 shasum -a 256 -c SHA256SUMS.txt
 ```
 
-## Upgrading to 1.0.24
+## Upgrading to 1.0.25
 
+<a name="upgrading-to-1024"></a>
 <a name="upgrading-to-1023"></a>
 <a name="upgrading-to-1022"></a>
 <a name="upgrading-to-1021"></a>
 <a name="upgrading-to-1020"></a>
-**Install the app.** Quit Vardek, open `Vardek-1.0.24.dmg`, and drag **Vardek**
+**Install the app.** Quit Vardek, open `Vardek-1.0.25.dmg`, and drag **Vardek**
 into **Applications**, replacing the old copy. Open Vardek.
 
+**Coming from 1.0.24?** Installing is all you need; nothing new to do.
+
 **Coming from 1.0.19, 1.0.20, 1.0.21, 1.0.22 or 1.0.23?** Installing is all you
-need; your pages, settings and approvals carry over. One thing is new in 1.0.24:
+need; your pages, settings and approvals carry over. One thing changed in 1.0.24:
 
 - **Your own widgets:** a `permissions.proxy` entry must name a host, such as
   `https://api.example.com/**`. An IP address, `localhost`, a `.local` name, a
@@ -237,6 +240,23 @@ No. Vardek runs full-screen on any macOS display, so you can try it before the
 Edge™ arrives. The layout is built for the panel's 2560×720 shape and reads
 best there, but nothing requires that hardware.
 </details>
+
+## What changed in 1.0.25
+
+Bug-fix release. Full notes on the
+[release page](https://github.com/vardekapp/Vardek/releases/tag/v1.0.25).
+
+- **Memory no longer grows while Vardek runs.** The app's main process grew by
+  roughly 0.5–0.9 GB an hour (one report reached 69 GB after three days) because
+  a macOS file-reading call leaked 8 KB with every message from the helper.
+  Vardek now reads with the system call directly
+  ([#4](https://github.com/vardekapp/Vardek/issues/4)).
+- **Vardek starts after a restart even when macOS renumbers your displays.** A
+  saved display number that no longer matched made the app quit at launch with no
+  message. It now falls back to the Xeneon Edge
+  ([#5](https://github.com/vardekapp/Vardek/issues/5)).
+
+See [Upgrading to 1.0.25](#upgrading-to-1025) for what to check after installing.
 
 ## What changed in 1.0.24
 
